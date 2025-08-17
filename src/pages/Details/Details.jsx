@@ -153,7 +153,25 @@ export default function Details() {
           <Link to="/" className="btn-home">
             Back to Home
           </Link>
-          <Link to="/search" className="btn-search">
+          <Link 
+            to="/calendar" 
+            className="btn-search"
+            onClick={() => {
+              // Save movie data to localStorage for the calendar page
+              if (movie) {
+                const movieData = {
+                  imdbID: movie.imdbID,
+                  Title: movie.Title,
+                  Year: movie.Year,
+                  Poster: movie.Poster,
+                  Runtime: movie.Runtime,
+                  Genre: movie.Genre,
+                  Plot: movie.Plot
+                };
+                localStorage.setItem("movienight.selectedMovie", JSON.stringify(movieData));
+              }
+            }}
+          >
             Add to Calendar
           </Link>
         </div>
