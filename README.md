@@ -1,12 +1,63 @@
-# React + Vite
+# MovieNight
+Plan a cozy movie night in minutes. Search for a film, view details, then add the event to your calendar (Google Calendar).
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## Features
+Home → Search → Details → Calendar flow
+Search the OMDb database by title
+Results Grid with posters and a “Choose to Watch” button under each movie
+Details Page with plot, year, genre, poster
+Add to Calendar page
+Open a pre-filled Google Calendar event
+Minimal, clean styling (CSS + a few utility classes)
+Client-side persistence using localStorage
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Tech Stack
+Vite + React
+React Router
+OMDb API (free API key needed)
+Plain CSS (no external UI frameworks required)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## App Flow
+Home (/): Click Start Planning Your Movie Night.
+Search (/search): Enter a title, click Search.
+ Under each result, click Choose to Watch.
+Details (/details/:id): See the selected movie’s details.
+ Click Add to Calendar.
+Calendar (/calendar): Pick date/time, then:
+Add to Google Calendar (opens a pre-filled event)
+:jigsaw: How It Works
+Search calls OMDb via src/utils/omdb.js:
+searchMovies(query, page)
+getMovieById(imdbID)
+When you click Add to Calendar on the Details page, a compact movie object is saved to localStorage as movienight.selectedMovie.
+The Calendar page reads that data, builds:
+A Google Calendar URL using event summary, description, and UTC start/end
+
+
+## Project Structure
+src/
+  components/
+    Form.jsx
+    ResultsGrid.jsx
+    MovieDisplay.jsx
+    Nav/
+      Nav.jsx
+      Nav.css
+  pages/
+    Home/
+      Home.jsx
+    Search/
+      Search.jsx
+    Details/
+      Details.jsx
+    Calendar/
+      AddToCalendar.jsx
+  utils/
+    omdb.js
+  App.jsx
+  main.jsx
+  index.css
+.env                  # add your OMDb key here
