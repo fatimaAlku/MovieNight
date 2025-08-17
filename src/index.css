@@ -71,6 +71,9 @@ body {
   transition: all 0.2s ease;
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
+.btn:hover { background:#1d4ed8; }
+.btn.secondary { background:#e5e7eb; color:#111827; }
+.btn.secondary:hover { background:#d1d5db; }
 
 .btn:hover {
   background: #2563eb;
