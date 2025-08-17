@@ -1,167 +1,166 @@
 // src/pages/Calendar/AddToCalendar.jsx
-import { useMemo, useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./AddToCalendar.css";
 
 export default function AddToCalendar() {
-  // we read selected movie info from localStorage (written by Details page)
-  const saved = safelyParse(localStorage.getItem("movienight.selectedMovie"));
-  const selected = saved && typeof saved === "object" ? saved : null;
+  // Form fields / UI
+  const [selectedDate, setSelectedDate] = useState("");   // YYYY-MM-DD
+  const [selectedTime, setSelectedTime] = useState("");   // HH:MM (24h)
+  const [movieTitle, setMovieTitle] = useState("");
+  const [moviePoster, setMoviePoster] = useState("");
+  const [notes, setNotes] = useState("");
+  const [loading, setLoading] = useState(true);
 
-  const [date, setDate] = useState(today());
-  const [time, setTime] = useState("19:30");
+  const navigate = useNavigate();
 
-  const summary = useMemo(
-    () => (selected ? `Movie Night: ${selected.Title}` : "Movie Night 🎬"),
-    [selected]
-  );
+  // Prefill from Details page (saved in localStorage)
+  useEffect(() => {
+    const savedMovie = localStorage.getItem("movienight.selectedMovie");
+    try {
+      if (savedMovie) {
+        const m = JSON.parse(savedMovie);
+        setMovieTitle(m?.Title || "");
+        setMoviePoster(m?.Poster || "");
+      }
+    } catch (err) {
+      console.error("Saved movie parse error:", err);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
-  const description = useMemo(() => {
-    if (!selected) return "Pick a movie on the Search page!";
-    const bits = [
-      selected.Title ? `Title: ${selected.Title}` : "",
-      selected.Year ? `Year: ${selected.Year}` : "",
-      selected.Genre ? `Genre: ${selected.Genre}` : "",
-      selected.Runtime ? `Runtime: ${selected.Runtime}` : "",
-      selected.imdbID ? `IMDb: https://www.imdb.com/title/${selected.imdbID}/` : "",
-    ].filter(Boolean);
-    return bits.join("\n");
-  }, [selected]);
+  // Open Google Calendar with a pre-filled event (no OAuth needed)
+  const addToGoogleCalendar = (event) => {
+    // Default duration: 2h
+    const start = new Date(`${event.date}T${event.time}:00`);
+    const end = new Date(start.getTime() + 2 * 60 * 60 * 1000);
 
-  const totalMinutes = useMemo(
-    () => parseRuntime(selected?.Runtime) ?? 120,
-    [selected]
-  );
+    // Local time format: YYYYMMDDTHHMMSS (no Z → treated as local)
+    const fmt = (d) => {
+      const pad = (n) => String(n).padStart(2, "0");
+      return (
+        d.getFullYear().toString() +
+        pad(d.getMonth() + 1) +
+        pad(d.getDate()) +
+        "T" +
+        pad(d.getHours()) +
+        pad(d.getMinutes()) +
+        pad(d.getSeconds())
+      );
+    };
 
-  const start = useMemo(() => toDate(date, time), [date, time]);
-  const end = useMemo(
-    () => new Date(start.getTime() + totalMinutes * 60000),
-    [start, totalMinutes]
-  );
+    const text = `Movie Night: ${event.movieTitle}`;
+    const details = `Movie: ${event.movieTitle}${event.notes ? `\n\nNotes: ${event.notes}` : ""}`;
 
-  const googleUrl = buildGoogleUrl({ summary, description, start, end });
+    const params = new URLSearchParams({
+      action: "TEMPLATE",
+      text,
+      dates: `${fmt(start)}/${fmt(end)}`,
+      details,
+      location: "Home",
+    });
 
-  function downloadICS() {
-    const ics = buildICS({ summary, description, start, end });
-    const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url; a.download = "movie-night.ics"; a.click();
-    URL.revokeObjectURL(url);
+    window.open(`https://calendar.google.com/calendar/render?${params}`, "_blank", "noopener,noreferrer");
+  };
+
+  // Save in local planner + open Calendar
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!selectedDate || !selectedTime || !movieTitle) return;
+
+    const movieEvent = {
+      id: Date.now(),
+      date: selectedDate,
+      time: selectedTime,
+      movieTitle,
+      moviePoster,
+      notes,
+      createdAt: new Date().toISOString(),
+    };
+
+    // Append to local planner storage
+    const existing = JSON.parse(localStorage.getItem("movienight.events") || "[]");
+    localStorage.setItem("movienight.events", JSON.stringify([...existing, movieEvent]));
+
+    // Open Google Calendar template
+    addToGoogleCalendar(movieEvent);
+
+    alert("Opening Google Calendar…");
+
+    // Reset form
+    setSelectedDate("");
+    setSelectedTime("");
+    setNotes("");
+  };
+
+  if (loading) {
+    return (
+      <div className="calendar-page-container">
+        <div className="calendar-loading">Loading...</div>
+      </div>
+    );
   }
 
   return (
-    <section className="stack">
-      <div className="card">
-        <h2>Add to Calendar</h2>
+    <div className="calendar-page-container">
+      <div className="calendar-page-header">
+        <h1>Add Movie to Calendar</h1>
+        <p>Schedule your movie night</p>
+      </div>
 
-        <div className="row wrap" style={{ gap: 12 }}>
-          <label>
-            <div className="muted">Date</div>
-            <input className="input" type="date" value={date} onChange={e => setDate(e.target.value)} />
-          </label>
-          <label>
-            <div className="muted">Start Time</div>
-            <input className="input" type="time" value={time} onChange={e => setTime(e.target.value)} />
-          </label>
+      <div className="calendar-movie-info">
+        <img src={moviePoster} alt={movieTitle} className="calendar-movie-poster" />
+        <h2>{movieTitle}</h2>
+      </div>
+
+      <form onSubmit={handleSubmit} className="calendar-page-form">
+        <div className="calendar-form-group">
+          <label htmlFor="date">Date:</label>
+          <input
+            type="date"
+            id="date"
+            value={selectedDate}
+            onChange={(e) => setSelectedDate(e.target.value)}
+            required
+          />
         </div>
 
-        <p className="muted" style={{ marginTop: 6 }}>
-          Runtime estimate: <strong>{formatMinutes(totalMinutes)}</strong>
-        </p>
+        <div className="calendar-form-group">
+          <label htmlFor="time">Time:</label>
+          <input
+            type="time"
+            id="time"
+            value={selectedTime}
+            onChange={(e) => setSelectedTime(e.target.value)}
+            required
+          />
+        </div>
 
-        <div className="row" style={{ marginTop: 8 }}>
-          <button className="btn" onClick={downloadICS}>Download .ics</button>
-          <a className="btn secondary" href={googleUrl} target="_blank" rel="noreferrer">
+        <div className="calendar-form-group">
+          <label htmlFor="notes">Notes (optional):</label>
+          <textarea
+            id="notes"
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+            placeholder="Add any notes about your movie night..."
+            rows="3"
+          />
+        </div>
+
+        <div className="calendar-form-actions">
+          <button type="submit" className="calendar-btn-submit">
             Add to Google Calendar
-          </a>
+          </button>
+          <button
+            type="button"
+            className="calendar-btn-cancel"
+            onClick={() => navigate("/search")} // go to Home to pick a different movie
+          >
+            Choose a Different Movie
+          </button>
         </div>
-      </div>
-
-      <div className="card">
-        <h3>Selected Movie</h3>
-        {!selected ? (
-          <p className="muted">No movie selected yet — go pick one on the Search page.</p>
-        ) : (
-          <div className="row" style={{ alignItems: "flex-start", gap: 14 }}>
-            <img
-              src={poster(selected?.Poster)}
-              alt=""
-              style={{ width: 92, height: 136, objectFit: "cover", borderRadius: 8 }}
-            />
-            <div>
-              <strong>{selected.Title}</strong>
-              <div className="muted">{selected.Year} • {selected.Genre || "—"}</div>
-              {selected.Runtime && <div className="muted">{selected.Runtime}</div>}
-            </div>
-          </div>
-        )}
-      </div>
-    </section>
+      </form>
+    </div>
   );
-}
-
-// helpers
-function safelyParse(raw) {
-  try { return JSON.parse(raw || "null"); } catch { return null; }
-}
-function poster(p) {
-  return p && p !== "N/A" ? p : "https://via.placeholder.com/92x136?text=No+Poster";
-}
-function today() {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
-}
-function toDate(date, time) {
-  const [y,m,d] = date.split("-").map(Number);
-  const [hh,mm] = time.split(":").map(Number);
-  return new Date(y, m-1, d, hh, mm, 0);
-}
-function toGoogleUTC(dt) {
-  const y = dt.getUTCFullYear();
-  const m = String(dt.getUTCMonth()+1).padStart(2,"0");
-  const d = String(dt.getUTCDate()).padStart(2,"0");
-  const hh = String(dt.getUTCHours()).padStart(2,"0");
-  const mm = String(dt.getUTCMinutes()).padStart(2,"0");
-  return `${y}${m}${d}T${hh}${mm}00Z`;
-}
-function buildGoogleUrl({ summary, description, start, end }) {
-  const base = "https://calendar.google.com/calendar/render?action=TEMPLATE";
-  const text = encodeURIComponent(summary);
-  const details = encodeURIComponent(description);
-  const dates = `${toGoogleUTC(start)}/${toGoogleUTC(end)}`;
-  return `${base}&text=${text}&details=${details}&dates=${dates}`;
-}
-function buildICS({ summary, description, start, end }) {
-  const now = new Date();
-  const fmt = (dt) => {
-    const y = dt.getUTCFullYear();
-    const m = String(dt.getUTCMonth()+1).padStart(2,"0");
-    const d = String(dt.getUTCDate()).padStart(2,"0");
-    const hh = String(dt.getUTCHours()).padStart(2,"0");
-    const mm = String(dt.getUTCMinutes()).padStart(2,"0");
-    return `${y}${m}${d}T${hh}${mm}00Z`;
-  };
-  const esc = (s="") => String(s).replace(/\\/g,"\\\\").replace(/\n/g,"\\n").replace(/;/g,"\\;").replace(/,/g,"\\,");
-  return [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//MovieNight//EN",
-    "CALSCALE:GREGORIAN",
-    "BEGIN:VEVENT",
-    `UID:movienight-${Date.now()}@local`,
-    `DTSTAMP:${fmt(now)}`,
-    `DTSTART:${fmt(start)}`,
-    `DTEND:${fmt(end)}`,
-    `SUMMARY:${esc(summary)}`,
-    `DESCRIPTION:${esc(description)}`,
-    "END:VEVENT",
-    "END:VCALENDAR",
-  ].join("\r\n");
-}
-function parseRuntime(rt) {
-  const m = typeof rt === "string" && rt.match(/(\d+)\s*min/i);
-  return m ? Number(m[1]) : null;
-}
-function formatMinutes(min) {
-  const h = Math.floor(min/60), m = min%60;
-  return h ? `${h}h ${m ? m+"m" : ""}`.trim() : `${m}m`;
 }
