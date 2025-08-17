@@ -1,8 +1,8 @@
 // src/pages/Search/Search.jsx
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Form from "../../components/Form.jsx";
-import ResultsGrid from "../../components/ResultsGrid.jsx";
+import Form from "../../components/Form/Form.jsx";
+import ResultsGrid from "../../components/ResultsGrid/ResultsGrid.jsx";
 import { searchMovies } from "../../utils/omdb.js";
 
 const LAST_QUERY_KEY = "movienight.lastQuery";

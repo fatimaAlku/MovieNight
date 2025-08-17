@@ -4,6 +4,7 @@ import Nav from "./components/Nav/Nav.jsx";
 import Home from "./pages/Home/Home.jsx";
 import Search from "./pages/Search/Search.jsx";
 import Details from "./pages/Details/Details.jsx";
+import AddToCalendar from "./pages/Calendar/AddToCalendar.jsx";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
         <Route path="/details/:id" element={<Details />} />
+        <Route path="/calendar" element={<AddToCalendar />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
