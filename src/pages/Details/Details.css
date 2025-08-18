@@ -2,13 +2,13 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: #333
   color: #333;
   min-height: 100vh;
 }
 
 .movie-hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #100f0f 0%, #3d3b41 100%);
   border-radius: 20px;
   padding: 3rem;
   margin-bottom: 3rem;
@@ -106,7 +106,7 @@
 }
 
 .detail-item {
-  background: white;
+  background: rgb(29, 29, 29);
   padding: 1.5rem;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -117,27 +117,31 @@
 .detail-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  border-color: #667eea;
+  border-color: #e74c3c;
 }
 
 .detail-item h3 {
-  color: #667eea;
+  color: #8e0808;
   margin: 0 0 0.8rem 0;
   font-size: 1.1rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  display: flex;
+  justify-self: center;
 }
 
 .detail-item p {
   margin: 0;
   line-height: 1.5;
-  color: #555;
+  color: #FFFF;
   font-size: 0.95rem;
+  display: flex;
+  justify-self: center;
 }
 
 .cast-section {
-  background: white;
+  background: linear-gradient(135deg, #100f0f 0%, #3d3b41 100%);
   padding: 2rem;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -145,9 +149,9 @@
 }
 
 .cast-section h3 {
-  color: #667eea;
+  color: #8e0808;
   margin: 0 0 1.5rem 0;
-  font-size: 1.3rem;
+  font-size: 20px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -174,20 +178,20 @@
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 0.8rem;
-  border: 3px solid #667eea;
+  border: 3px solid #8e0808;
   box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
 }
 
 .cast-name {
   font-weight: 600;
-  color: #333;
+  color: #FFFF;
   font-size: 0.9rem;
   margin-bottom: 0.3rem;
 }
 
 .cast-character {
   font-size: 0.8rem;
-  color: #666;
+  color: #ffffffa9;
   font-style: italic;
 }
 
@@ -214,26 +218,23 @@
 }
 
 .btn-home {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #560606 0%, #8e0808 100%);
   color: white;
 }
 
 .btn-home:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 10px 25px rgba(241, 242, 247, 0.4);
 }
 
 .btn-search {
-  background: white;
-  color: #667eea;
-  border: 2px solid #667eea;
+  background: linear-gradient(135deg, #560606 0%, #8e0808 100%);
+  color: white;
 }
 
 .btn-search:hover {
-  background: #667eea;
-  color: white;
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 10px 25px rgba(241, 242, 247, 0.4);
 }
 
 .loading-spinner {

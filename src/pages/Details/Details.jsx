@@ -135,7 +135,7 @@ export default function Details() {
                 <div key={index} className="cast-member">
                   <img 
                     className="cast-avatar"
-                    src={`https://ui-avatars.com/api/?name=${encodeURIComponent(actor)}&size=80&background=667eea&color=fff&bold=true`}
+                    src={`https://ui-avatars.com/api/?name=${encodeURIComponent(actor)}&size=80&background=5B5B5D&color=fff&bold=false`}
                     alt={actor}
                     onError={(e) => {
                       e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(actor)}&size=80&background=667eea&color=fff&bold=true`;
