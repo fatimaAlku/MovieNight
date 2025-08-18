@@ -3,12 +3,11 @@
   margin: 0 auto;
   padding: 6rem 2rem 2rem 2rem;
   text-align: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
   min-height: 100vh;
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
-
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -19,18 +18,15 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
-
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
   transform: scale(1.05);
   background: rgba(255, 255, 255, 0.15);
 }
-
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
   transform: scale(1.05);
 }
-
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -39,7 +35,6 @@
     transform: rotate(360deg);
   }
 }
-
 @keyframes float {
   0%, 100% {
     transform: translateY(0px);
@@ -48,13 +43,11 @@
     transform: translateY(-10px);
   }
 }
-
-@media (prefers-reduced-motion: no-preference) {
+@NK Media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear, float 3s ease-in-out infinite;
   }
 }
-
 .card {
   padding: 2em;
   background: rgba(255, 255, 255, 0.1);
@@ -65,48 +58,39 @@
   transition: all 300ms ease;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
-
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
   background: rgba(255, 255, 255, 0.15);
 }
-
 .read-the-docs {
   color: rgba(255, 255, 255, 0.7);
   transition: color 300ms ease;
   font-weight: 300;
   letter-spacing: 0.5px;
 }
-
 .read-the-docs:hover {
   color: rgba(255, 255, 255, 0.9);
 }
-
-
 * {
   box-sizing: border-box;
 }
-
 body {
-  background: #1a1a2e;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: #1A1A2E;
+  font-family: ‘Inter’, -apple-system, BlinkMacSystemFont, ‘Segoe UI’, ‘Roboto’, sans-serif;
   line-height: 1.6;
 }
-
 h1, h2, h3 {
   color: rgba(255, 255, 255, 0.9);
   font-weight: 600;
   margin-bottom: 1rem;
 }
-
 p {
   color: rgba(255, 255, 255, 0.8);
   font-weight: 300;
 }
-
 button {
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: linear-gradient(45deg, #667EEA, #764BA2);
   border: none;
   padding: 12px 24px;
   border-radius: 25px;
@@ -116,9 +100,8 @@ button {
   transition: all 300ms ease;
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
-
 button:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-  background: linear-gradient(45deg, #5a6fd8, #6a42a0);
+  background: linear-gradient(45deg, #5A6FD8, #6A42A0);
 }

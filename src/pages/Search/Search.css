@@ -1,0 +1,100 @@
+/* src/pages/Search/Search.css */
+
+.search-page {
+  display: grid;
+  gap: 18px;
+  margin: 0 auto;
+}
+
+/* Hero */
+.search-hero {
+  position: relative;
+  border-radius: 16px;
+  padding: 28px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  background:
+    radial-gradient(1200px 300px at 10% -20%, rgba(59,130,246,.18), transparent 60%),
+    radial-gradient(1000px 260px at 110% -10%, rgba(99,102,241,.16), transparent 60%),
+    #418aca;
+
+    margin-top: 30px;
+}
+
+.search-hero__content h1 {
+  margin: 0 0 6px 0;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  letter-spacing: .2px;
+}
+
+.search-hero__content p {
+  margin: 0;
+  color: #6b7280; /* muted */
+}
+
+/* Form card (wraps your Form component) */
+.search-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.05);
+}
+
+/* If Tailwind isn't installed, these ensure the form still looks good */
+.search-card form {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 8px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.search-card input[type="text"] {
+  flex: 1;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 10px 12px;
+  outline: none;
+}
+
+.search-card input[type="text"]:focus {
+  border-color: #93c5fd;
+  box-shadow: 0 0 0 3px rgba(59,130,246,.2);
+}
+
+.search-card button[type="submit"] {
+  background: #2563eb;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.search-card button[type="submit"]:hover {
+  background: #1d4ed8;
+}
+
+.search-tips {
+  margin: 10px 4px 4px 4px;
+  color: #6b7280;
+  font-size: .95rem;
+}
+
+/* Results area spacing */
+.search-results {
+  display: grid;
+  gap: 12px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .search-card form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

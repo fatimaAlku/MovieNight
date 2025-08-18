@@ -1,36 +1,31 @@
 /* AddToCalendar.css - Styles for the calendar page */
-
 .calendar-page-container {
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: linear-gradient(135deg, #F5F7FA 0%, #C3CFE2 100%);
   min-height: 100vh;
 }
-
 /* Header Section */
 .calendar-page-header {
   text-align: center;
   margin-bottom: 3rem;
   color: #333;
 }
-
 .calendar-page-header h1 {
   font-size: 2.5rem;
   font-weight: 700;
   margin: 0 0 0.5rem 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-
 .calendar-page-header p {
   font-size: 1.2rem;
   color: #666;
   margin: 0;
 }
-
 /* Movie Information Display */
 .calendar-movie-info {
   background: white;
@@ -39,9 +34,8 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   margin-bottom: 2rem;
   text-align: center;
-  border: 1px solid #e1e8ed;
+  border: 1px solid #E1E8ED;
 }
-
 .calendar-movie-poster {
   width: 150px;
   height: 225px;
@@ -50,27 +44,23 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   margin-bottom: 1rem;
 }
-
 .calendar-movie-info h2 {
   color: #333;
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0;
 }
-
 /* Form Styling */
 .calendar-page-form {
   background: white;
   padding: 2rem;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e1e8ed;
+  border: 1px solid #E1E8ED;
 }
-
 .calendar-form-group {
   margin-bottom: 1.5rem;
 }
-
 .calendar-form-group label {
   display: block;
   margin-bottom: 0.5rem;
@@ -78,31 +68,27 @@
   color: #333;
   font-size: 1rem;
 }
-
 .calendar-form-group input,
 .calendar-form-group textarea {
   width: 100%;
   padding: 0.8rem;
-  border: 2px solid #e1e8ed;
+  border: 2px solid #E1E8ED;
   border-radius: 8px;
   font-size: 1rem;
   transition: all 0.3s ease;
   box-sizing: border-box;
 }
-
 .calendar-form-group input:focus,
 .calendar-form-group textarea:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #667EEA;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
-
 .calendar-form-group textarea {
   resize: vertical;
   min-height: 80px;
   font-family: inherit;
 }
-
 /* Button Styling */
 .calendar-form-actions {
   display: flex;
@@ -111,7 +97,6 @@
   margin-top: 2rem;
   flex-wrap: wrap;
 }
-
 .calendar-btn-submit,
 .calendar-btn-cancel {
   padding: 1rem 2rem;
@@ -126,31 +111,26 @@
   text-align: center;
   min-width: 150px;
 }
-
 .calendar-btn-submit {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
   color: white;
   box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
 }
-
 .calendar-btn-submit:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
 }
-
 .calendar-btn-cancel {
   background: white;
-  color: #667eea;
-  border: 2px solid #667eea;
+  color: #667EEA;
+  border: 2px solid #667EEA;
 }
-
 .calendar-btn-cancel:hover {
-  background: #667eea;
+  background: #667EEA;
   color: white;
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
 }
-
 /* Loading State */
 .calendar-loading {
   text-align: center;
@@ -158,27 +138,22 @@
   color: #666;
   font-size: 1.2rem;
 }
-
 /* Responsive Design */
-@media (max-width: 768px) {
+@NK Media (max-width: 768px) {
   .calendar-page-container {
     padding: 1rem;
   }
-  
   .calendar-page-header h1 {
     font-size: 2rem;
   }
-  
   .calendar-movie-poster {
     width: 120px;
     height: 180px;
   }
-  
   .calendar-form-actions {
     flex-direction: column;
     align-items: center;
   }
-  
   .calendar-btn-submit,
   .calendar-btn-cancel {
     width: 100%;
