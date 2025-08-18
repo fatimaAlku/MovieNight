@@ -11,23 +11,15 @@ const Form = ({ onSearch }) => {
   };
 
   return (
-    <form 
-      onSubmit={handleSubmit} 
-      className="flex items-center gap-3 p-4 bg-gray-100 rounded-lg shadow-md"
-    >
+    <form onSubmit={handleSubmit} className="search-form">
       <input
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search for a movie"
-        className="flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="search-input"
       />
-      <button
-        type="submit"
-        className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-      >
-        Search
-      </button>
+      <button type="submit" className="search-button">Search</button>
     </form>
   );
 };
