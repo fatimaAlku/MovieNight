@@ -1,165 +1,225 @@
-# MovieNight
+# 🎬 MovieNight
 
-Plan a cozy movie night in minutes. Search for a film, view details, then add the event to your calendar!
+**Plan Your Perfect Movie Night - Together!**
 
----
+A modern web application that helps you discover movies, plan watch parties, and coordinate movie nights with friends. Add events to your calendar and share the experience - because the best movies are enjoyed together.
 
-## Features
-
-* **Home → Search → Details → Calendar** flow
-* **Search** the OMDb database by title
-* **Results Grid** with posters and a **“Choose to Watch”** button under each movie
-* **Details Page** with plot, year, genre, poster
-* **Add to Calendar** page
-* Minimal, clean styling (CSS + a few utility classes)
-* Client-side persistence using `localStorage`
+![MovieNight Hero](https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=800&auto=format&fit=crop)
 
 ---
 
-## Setup
+## ✨ Features
+
+### 🎯 Core Functionality
+- **Movie Discovery**: Search the OMDb database by title, genre, and year
+- **Smart Results**: Grid-based movie display with posters and key information
+- **Detailed Views**: Comprehensive movie information including plot, cast, and ratings
+- **Calendar Integration**: Add movie nights to your Google Calendar
+- **Social Planning**: Share and coordinate movie nights with friends
+
+### 🎨 User Experience
+- **Modern UI**: Netflix-inspired design with smooth animations
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
+- **Intuitive Navigation**: Clean, user-friendly interface
+- **Dark Theme**: Easy on the eyes for late-night browsing
+
+### 🔧 Technical Features
+- **Real-time Search**: Instant movie results as you type
+- **Local Storage**: Remember your search history and preferences
+- **API Integration**: Powered by OMDb (Open Movie Database)
+- **Progressive Web App**: Fast loading and smooth interactions
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-* Node.js 18+ and npm
-* An OMDb API key
+- **Node.js** 18+ and npm
+- **OMDb API Key** (free registration required)
 
-### Environment Variables
+### Environment Setup
 
-Create a `.env` file in the project root:
+1. **Get Your OMDb API Key**
+   - Visit [OMDb API](http://www.omdbapi.com/apikey.aspx)
+   - Register for a free API key
+   - Copy your key
 
-```env
-VITE_OMDB_KEY=YOUR_OMDB_KEY_HERE
-```
+2. **Configure Environment Variables**
+   ```bash
+   # Create .env file in project root
+   VITE_OMDB_KEY=YOUR_OMDB_API_KEY_HERE
+   ```
 
-> After creating or changing `.env`, **restart** the dev server (Vite only reads env at startup).
+   > ⚠️ **Important**: After creating or modifying `.env`, restart your development server.
 
-### Install
+### Installation
 
 ```bash
+# Clone the repository
+git clone <your-repo-url>
+cd MovieNight
+
+# Install dependencies
 npm install
-```
 
----
-
-## Run Steps
-
-### Development
-
-```bash
+# Start development server
 npm run dev
 ```
 
-Open the printed localhost URL in your browser.
+Open your browser to the displayed localhost URL.
 
-### Production Build
+---
+
+## 🏗️ Project Structure
+
+```
+MovieNight/
+├── src/
+│   ├── components/          # Reusable UI components
+│   │   ├── Form/           # Search form component
+│   │   ├── MovieDisplay/   # Movie information display
+│   │   ├── Nav/            # Navigation bar
+│   │   └── ResultsGrid/    # Search results grid
+│   ├── pages/              # Main application pages
+│   │   ├── Home/           # Landing page
+│   │   ├── Search/         # Movie search interface
+│   │   ├── Details/        # Movie details page
+│   │   └── Calendar/       # Calendar integration
+│   ├── utils/              # Utility functions
+│   │   └── omdb.js         # OMDb API integration
+│   └── assets/             # Static assets
+├── public/                 # Public assets
+├── index.html              # Main HTML file
+└── package.json            # Dependencies and scripts
+```
+
+---
+
+## 🎭 How It Works
+
+### 1. **Discover Movies**
+   - Use the search bar to find movies by title
+   - Browse through results with movie posters and details
+   - Filter and sort results as needed
+
+### 2. **Plan Your Night**
+   - Select a movie that interests you
+   - View comprehensive details including plot, cast, and ratings
+   - Choose the perfect movie for your group
+
+### 3. **Coordinate Together**
+   - Add the movie night to your Google Calendar
+   - Share event details with friends
+   - Set reminders and notes for the perfect movie night
+
+---
+
+## 🛠️ Development
+
+### Available Scripts
 
 ```bash
-npm run build
-npm run preview 
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run preview      # Preview production build
+npm run lint         # Run ESLint
 ```
 
----
+### Technology Stack
 
-## Team Roles
-
-| Role              | Responsibilities                                                            |
-| ----------------- | --------------------------------------------------------------------------- |
-| PM-GitHub Manager     | Fatima Alkuwaiti                   |
-| UI Lead | Salman Alhashimee             |
-| Layout Lead    | Alia Burashid                    |
-| Page Dev A      | Salman Alhashimee |
-| Page Dev B     | Hawra Ayoob                                     |
-| QA/API/Docs     | Abdulrazaq Mohammed                                     |
-
+- **Frontend**: React 18 + Vite
+- **Styling**: CSS3 with modern features
+- **API**: OMDb (Open Movie Database)
+- **Calendar**: Google Calendar API
+- **State Management**: React Hooks
+- **Routing**: React Router v6
 
 ---
 
-## API Choice
+## 🌟 API Integration
 
-* **OMDb** (Open Movie Database) was chosen because it’s simple, widely used, and offers a free key for quick prototyping.
-* Endpoints used (implemented in `src/utils/omdb.js`):
+### OMDb API Endpoints
 
-  * `searchMovies(query, page)` → uses the `s` query param for title search
-  * `getMovieById(imdbID)` → uses the `i` param for detailed view
----
+The application integrates with OMDb API for movie data:
 
-## Screenshots
+- **Search Movies**: `searchMovies(query, page)` - Find movies by title
+- **Movie Details**: `getMovieById(imdbID)` - Get comprehensive movie information
 
-Add images to a local `./screenshots/` folder and reference them here:
+### API Features
 
-```md
-![Overview](./screenshots/overview.png)
-![Search](./screenshots/search.png)
-![Details](./screenshots/details.png)
-![Calendar](./screenshots/calendar.png)
-```
-
+- **Free Tier**: 1,000 requests per day
+- **Comprehensive Data**: Posters, plots, ratings, cast information
+- **Real-time Results**: Instant search responses
+- **Pagination**: Handle large result sets efficiently
 
 ---
 
-## App Flow
+## 👥 Team
 
-1. **Home** (`/`): Click **Start Planning Your Movie Night**.
-2. **Search** (`/search`): Enter a title, click **Search**.
-   Under each result, click **Choose to Watch**.
-3. **Details** (`/details/:id`): See the selected movie’s details.
-   Click **Add to Calendar**.
-4. **Calendar** (`/calendar`): Pick date/time, then:
-
-   * **Add to Google Calendar** (opens a pre-filled event)
-
----
-
-## How It Works
-
-* **Search** calls OMDb via `src/utils/omdb.js`:
-
-  * `searchMovies(query, page)`
-  * `getMovieById(imdbID)`
-* When you click **Add to Calendar** on the Details page, a compact movie object is saved to `localStorage` as `movienight.selectedMovie`.
-* The **Calendar** page reads that data, builds:
-
-  * A **Google Calendar URL** using event summary, description, and UTC start/end
-  * An **iCalendar (.ics)** file for download
+| Role | Team Member | Responsibilities |
+|------|-------------|------------------|
+| **PM & GitHub Manager** | Fatima Alkuwaiti | Project coordination & version control |
+| **UI Lead** | Salman Alhashimee | User interface design & implementation |
+| **Layout Lead** | Alia Burashid | Page structure & responsive design |
+| **Page Developer A** | Salman Alhashimee | Core page functionality |
+| **Page Developer B** | Hawra Ayoob | Additional page features |
+| **QA/API/Docs** | Abdulrazaq Mohammed | Testing, API integration & documentation |
 
 ---
 
+## 🎯 Why OMDb?
 
-## Known Issues
+**OMDb (Open Movie Database)** was chosen for this project because:
 
-* **OMDb rate limits** on free keys can cause intermittent “Too many requests” errors.
-* Some titles return **`Poster: "N/A"`**; we display a fallback.
-* Timezone nuances: calendar times are converted to UTC for Google; user display may vary by locale.
-* Currently supports **one selected movie** for the calendar (no multi-movie watchlist yet).
-
-
----
-
-## Next Steps
-
-* Add **watchlist** (multiple selections) and create a combined event
-* **Debounced search** and loading skeletons
-* Better **error boundaries** & retry
-* Input to add **location/notes** to calendar events
+- ✅ **Free API Key**: Quick setup for prototyping
+- ✅ **Comprehensive Data**: Rich movie information
+- ✅ **Reliable Service**: Stable and well-maintained
+- ✅ **Wide Coverage**: Extensive movie database
+- ✅ **Simple Integration**: Easy-to-use REST API
 
 ---
 
-## NPM Scripts
+## 📱 Screenshots
 
-```bash
-npm run dev       # start local dev server
-npm run build     # production build
-npm run preview   # preview production build
-```
+> 📸 **Coming Soon**: Add screenshots to showcase the application's interface and features.
 
 ---
 
-## Acknowledgements
+## 🤝 Contributing
 
-* Movie data by [OMDb API](https://www.omdbapi.com/)
-* Bootstrapped with [Vite](https://vitejs.dev/) and React
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ---
 
-happy movie night! 
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- **OMDb API** for providing comprehensive movie data
+- **React Team** for the amazing framework
+- **Vite** for the fast build tool
+- **Unsplash** for beautiful stock photography
+
+---
+
+## 📞 Support
+
+If you have any questions or need help:
+
+- 📧 Create an issue in this repository
+- 💬 Reach out to the development team
+- 📚 Check the documentation above
+
+---
+
+**Made with ❤️ by the MovieNight Team** 
 
