@@ -152,7 +152,7 @@ The application integrates with OMDb API for movie data:
 | Role | Team Member | Responsibilities |
 |------|-------------|------------------|
 | **PM & GitHub Manager** | Fatima Alkuwaiti | Project coordination & version control |
-| **UI Lead** | Salman Alhashimee | User interface design & implementation |
+| **UI Lead** | Salman Alhashimee & Alia Burashid | User interface design & implementation |
 | **Layout Lead** | Alia Burashid | Page structure & responsive design |
 | **Page Developer A** | Salman Alhashimee | Core page functionality |
 | **Page Developer B** | Hawra Ayoob | Additional page features |
