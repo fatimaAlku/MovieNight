@@ -23,7 +23,7 @@ A modern web application that helps you discover movies, plan watch parties, and
 - **Intuitive Navigation**: Clean, user-friendly interface
 - **Dark Theme**: Easy on the eyes for late-night browsing
 
-### 🔧 Technical Features
+### Technical Features
 - **Real-time Search**: Instant movie results as you type
 - **Local Storage**: Remember your search history and preferences
 - **API Integration**: Powered by OMDb (Open Movie Database)
@@ -123,7 +123,6 @@ MovieNight/
 npm run dev          # Start development server
 npm run build        # Build for production
 npm run preview      # Preview production build
-npm run lint         # Run ESLint
 ```
 
 ### Technology Stack
@@ -175,12 +174,14 @@ The application integrates with OMDb API for movie data:
 
 ##  Screenshots
 
-> 📸 **Coming Soon**: 
-
+![MovieNight MainScreen](public/MovieNight-Main.png)
+![MovieNight BrowseScreen](public/MovieNight-Browse.png)
+![MovieNight DetailsScreen](public/MovieNight-Details.png)
+![MovieNight CalenderScreen](public/MovieNight-Calender.png)
 ---
 
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **OMDb API** for providing comprehensive movie data
 - **React Team** for the amazing framework
@@ -190,5 +191,5 @@ The application integrates with OMDb API for movie data:
 ---
 
 
-**Made with ❤️ by the MovieNight Team** 
+**Made with 🤍 by the MovieNight Team.** 
 
