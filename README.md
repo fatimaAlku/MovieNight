@@ -8,16 +8,16 @@ A modern web application that helps you discover movies, plan watch parties, and
 
 ---
 
-## ✨ Features
+##  Features
 
-### 🎯 Core Functionality
+###  Core Functionality
 - **Movie Discovery**: Search the OMDb database by title, genre, and year
 - **Smart Results**: Grid-based movie display with posters and key information
 - **Detailed Views**: Comprehensive movie information including plot, cast, and ratings
 - **Calendar Integration**: Add movie nights to your Google Calendar
 - **Social Planning**: Share and coordinate movie nights with friends
 
-### 🎨 User Experience
+###  User Experience
 - **Modern UI**: Netflix-inspired design with smooth animations
 - **Responsive Design**: Works seamlessly on desktop and mobile devices
 - **Intuitive Navigation**: Clean, user-friendly interface
@@ -31,7 +31,7 @@ A modern web application that helps you discover movies, plan watch parties, and
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -71,7 +71,7 @@ Open your browser to the displayed localhost URL.
 
 ---
 
-## 🏗️ Project Structure
+##  Project Structure
 
 ```
 MovieNight/
@@ -96,7 +96,7 @@ MovieNight/
 
 ---
 
-## 🎭 How It Works
+##  How It Works
 
 ### 1. **Discover Movies**
    - Use the search bar to find movies by title
@@ -115,7 +115,7 @@ MovieNight/
 
 ---
 
-## 🛠️ Development
+##  Development
 
 ### Available Scripts
 
@@ -128,16 +128,16 @@ npm run lint         # Run ESLint
 
 ### Technology Stack
 
-- **Frontend**: React 18 + Vite
-- **Styling**: CSS3 with modern features
+- **Frontend**: React + Vite
+- **Styling**: CSS with modern features
 - **API**: OMDb (Open Movie Database)
 - **Calendar**: Google Calendar API
 - **State Management**: React Hooks
-- **Routing**: React Router v6
+- **Routing**: React Router
 
 ---
 
-## 🌟 API Integration
+##  API Integration
 
 ### OMDb API Endpoints
 
@@ -146,16 +146,9 @@ The application integrates with OMDb API for movie data:
 - **Search Movies**: `searchMovies(query, page)` - Find movies by title
 - **Movie Details**: `getMovieById(imdbID)` - Get comprehensive movie information
 
-### API Features
-
-- **Free Tier**: 1,000 requests per day
-- **Comprehensive Data**: Posters, plots, ratings, cast information
-- **Real-time Results**: Instant search responses
-- **Pagination**: Handle large result sets efficiently
-
 ---
 
-## 👥 Team
+##  Team
 
 | Role | Team Member | Responsibilities |
 |------|-------------|------------------|
@@ -168,7 +161,7 @@ The application integrates with OMDb API for movie data:
 
 ---
 
-## 🎯 Why OMDb?
+##  Why OMDb?
 
 **OMDb (Open Movie Database)** was chosen for this project because:
 
@@ -180,27 +173,12 @@ The application integrates with OMDb API for movie data:
 
 ---
 
-## 📱 Screenshots
+##  Screenshots
 
-> 📸 **Coming Soon**: Add screenshots to showcase the application's interface and features.
-
----
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+> 📸 **Coming Soon**: 
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
 
 ## 🙏 Acknowledgments
 
@@ -211,15 +189,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 📞 Support
-
-If you have any questions or need help:
-
-- 📧 Create an issue in this repository
-- 💬 Reach out to the development team
-- 📚 Check the documentation above
-
----
 
 **Made with ❤️ by the MovieNight Team** 
 
